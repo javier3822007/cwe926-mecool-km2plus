@@ -1,0 +1,216 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      com.skw.ota.update.SysLocalStateDialog:
+        b738c58 com.sdt.ota/.common.dialog.SysLocalStateDialog filter 905c1b1
+          Action: "com.skw.ota.update.SysLocalStateDialog"
+          Category: "android.intent.category.DEFAULT"
+      com.skw.ota.update.SysBootDialog:
+        6f2c7ca com.sdt.ota/.common.dialog.SysBootupDialog filter e7acd3b
+          Action: "com.skw.ota.update.SysBootDialog"
+          Category: "android.intent.category.DEFAULT"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      androidx.profileinstaller.action.SAVE_PROFILE:
+        5c11604 com.sdt.ota/androidx.profileinstaller.ProfileInstallReceiver filter 4a7a8b3
+          Action: "androidx.profileinstaller.action.SAVE_PROFILE"
+      androidx.profileinstaller.action.INSTALL_PROFILE:
+        5c11604 com.sdt.ota/androidx.profileinstaller.ProfileInstallReceiver filter 303c7ed
+          Action: "androidx.profileinstaller.action.INSTALL_PROFILE"
+      androidx.profileinstaller.action.SKIP_FILE:
+        5c11604 com.sdt.ota/androidx.profileinstaller.ProfileInstallReceiver filter dd48622
+          Action: "androidx.profileinstaller.action.SKIP_FILE"
+      androidx.profileinstaller.action.BENCHMARK_OPERATION:
+        5c11604 com.sdt.ota/androidx.profileinstaller.ProfileInstallReceiver filter e3b8e70
+          Action: "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+      android.intent.action.BOOT_COMPLETED:
+        85d9696 com.sdt.ota/.BootReceiver filter 1bf0217
+          Action: "android.intent.action.BOOT_COMPLETED"
+
+Service Resolver Table:
+  Full MIME Types:
+      shared/ota:
+        f61f5e9 com.sdt.ota/.BootService filter d8e26e
+          Action: "com.skw.ota.update.BootService"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "shared/ota"
+
+  Base MIME Types:
+      shared:
+        f61f5e9 com.sdt.ota/.BootService filter d8e26e
+          Action: "com.skw.ota.update.BootService"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "shared/ota"
+
+  Non-Data Actions:
+      com.skw.ota.update.CoreService:
+        6a1d0f com.sdt.ota/.CoreService filter aa3219c
+          Action: "com.skw.ota.update.CoreService"
+          Category: "android.intent.category.DEFAULT"
+
+  MIME Typed Actions:
+      com.skw.ota.update.BootService:
+        f61f5e9 com.sdt.ota/.BootService filter d8e26e
+          Action: "com.skw.ota.update.BootService"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "shared/ota"
+
+Domain verification status:
+
+Permissions:
+  Permission [com.sdt.ota.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION] (c8aee1f):
+    sourcePackage=com.sdt.ota
+    uid=10094 gids=[] type=0 prot=signature
+    perm=PermissionInfo{26bbc33 com.sdt.ota.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION}
+    flags=0x0
+
+Registered ContentProviders:
+  com.sdt.ota/androidx.core.content.FileProvider:
+    Provider{da8dbf0 com.sdt.ota/androidx.core.content.FileProvider}
+  com.sdt.ota/androidx.startup.InitializationProvider:
+    Provider{f88f569 com.sdt.ota/androidx.startup.InitializationProvider}
+
+ContentProvider Authorities:
+  [com.sdt.ota.androidx-startup]:
+    Provider{f88f569 com.sdt.ota/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{6af056c com.sdt.ota}
+  [com.sdt.ota.app.fileProvider]:
+    Provider{da8dbf0 com.sdt.ota/androidx.core.content.FileProvider}
+      applicationInfo=ApplicationInfo{9b46735 com.sdt.ota}
+
+Key Set Manager:
+  [com.sdt.ota]
+      Signing KeySets: 45
+
+Packages:
+  Package [com.sdt.ota] (14047ca):
+    appId=10094
+    pkg=Package{eb27f25 com.sdt.ota}
+    codePath=/system/priv-app/SdtUpdate
+    resourcePath=/system/priv-app/SdtUpdate
+    legacyNativeLibraryDir=/system/priv-app/SdtUpdate/lib
+    extractNativeLibs=false
+    primaryCpuAbi=null
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=20501 minSdk=28 targetSdk=34
+    minExtensionVersions=[]
+    versionName=2.5.1
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=2
+    flags=[ SYSTEM HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVILEGED PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    dataDir=/data/user/0/com.sdt.ota
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2008-12-31 21:00:00
+    lastUpdateTime=2008-12-31 21:00:00
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=null
+    originatingPackageName=null
+    packageSource=0
+    appMetadataFilePath=null
+    signatures=PackageSignatures{5b98fa version:2, signatures:[e10caf50], past signatures:[]}
+    installPermissionsFixed=false
+    pkgFlags=[ SYSTEM HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVILEGED PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    declared permissions:
+      com.sdt.ota.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: prot=signature
+    requested permissions:
+      android.permission.RECEIVE_BOOT_COMPLETED
+      android.permission.FOREGROUND_SERVICE
+      android.permission.SYSTEM_ALERT_WINDOW
+      android.permission.INTERNET
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.CHANGE_NETWORK_STATE
+      android.permission.ACCESS_WIFI_STATE
+      android.permission.CHANGE_WIFI_STATE
+      com.skyworthdigital.stb.permission.CONNECT_CLOUD
+      skw.permission.READ_CERT
+      android.permission.POST_NOTIFICATIONS
+      android.permission.QUERY_ALL_PACKAGES
+      android.permission.READ_PRIVILEGED_PHONE_STATE
+      android.permission.RECOVERY
+      android.permission.REBOOT
+      android.permission.ACCESS_CACHE_FILESYSTEM
+      android.permission.DELETE_CACHE_FILES
+      android.permission.START_ACTIVITIES_FROM_BACKGROUND
+      android.permission.SCHEDULE_EXACT_ALARM
+      android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED
+      android.permission.USE_EXACT_ALARM
+      android.permission.REQUEST_INSTALL_PACKAGES
+      android.permission.REQUEST_DELETE_PACKAGES
+      android.permission.INSTALL_PACKAGE_UPDATES
+      com.sdt.ota.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+    install permissions:
+      android.permission.ACCESS_CACHE_FILESYSTEM: granted=true
+      android.permission.RECOVERY: granted=true
+      android.permission.SYSTEM_ALERT_WINDOW: granted=false
+      android.permission.CHANGE_NETWORK_STATE: granted=true
+      android.permission.FOREGROUND_SERVICE: granted=true
+      android.permission.RECEIVE_BOOT_COMPLETED: granted=true
+      android.permission.INTERNET: granted=true
+      android.permission.USE_EXACT_ALARM: granted=true
+      android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED: granted=true
+      com.sdt.ota.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+      android.permission.READ_PRIVILEGED_PHONE_STATE: granted=true
+      android.permission.INSTALL_PACKAGE_UPDATES: granted=true
+      android.permission.CHANGE_WIFI_STATE: granted=true
+      android.permission.DELETE_CACHE_FILES: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      android.permission.REBOOT: granted=true
+      android.permission.SCHEDULE_EXACT_ALARM: granted=true
+      android.permission.REQUEST_DELETE_PACKAGES: granted=true
+      android.permission.START_ACTIVITIES_FROM_BACKGROUND: granted=true
+      android.permission.ACCESS_WIFI_STATE: granted=true
+      android.permission.REQUEST_INSTALL_PACKAGES: granted=false
+      android.permission.QUERY_ALL_PACKAGES: granted=true
+    User 0: ceDataInode=196703 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false
+      installReason=0
+      firstInstallTime=2026-11-24 12:18:38
+      uninstallReason=0
+      overlay paths:
+        /data/resource-cache/com.android.systemui-neutral-UAEj.frro
+        /data/resource-cache/com.android.systemui-accent-tAs3.frro
+        /data/resource-cache/com.android.systemui-dynamic-4SSA.frro
+      gids=[2001, 3003]
+      runtime permissions:
+        android.permission.POST_NOTIFICATIONS: granted=true, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED]
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+    com.poc.cwe926.bootservice:
+      com.sdt.ota
+  queries via component:
+  queryable via interaction:
+    User 0:
+      [com.sdt.soundbarupdate,com.android.tv.feedbackconsent,com.dolby.android.audio.service,com.android.inputdevices,com.android.tv.settings,com.sdt.mecoolrcupair,com.sdt.deviceinfo,com.android.dynsystem,com.android.wallpaperbackup,com.netflix.tokenmanager,com.droidlogic.tv.extras,com.droidlogic.tv.settings,com.droidlogic,com.android.keychain,com.sdt.frontpanelledsservice,com.android.localtransport,com.android.location.fused,com.sdt.globalkey,com.sdt.soundbarpair,com.android.providers.settings,com.sdt.remotecontrolota,android]:
+        com.sdt.ota
+      com.google.android.ext.services:
+        com.sdt.ota
+      [com.google.android.gms,com.google.android.gsf]:
+        com.sdt.ota
+      com.google.android.tvrecommendations:
+        com.sdt.ota
+      com.google.android.inputmethod.latin:
+        com.sdt.ota
+      com.android.systemui:
+        com.sdt.ota
+      com.sdt.ota:
+        com.poc.cwe926.bootservice
+  queryable via uses-library:
+
+Dexopt state:
+  [com.sdt.ota]
+    path: /system/priv-app/SdtUpdate/SdtUpdate.apk
+      arm: [status=speed-profile] [reason=bg-dexopt] [primary-abi]
+        [location is /data/dalvik-cache/arm/system@priv-app@SdtUpdate@SdtUpdate.apk@classes.dex]
+
+Compiler stats:
+  [com.sdt.ota]
+    (No recorded stats)

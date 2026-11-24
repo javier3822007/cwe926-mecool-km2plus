@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
             intent.putExtra("typeSelectable", true);
             startForegroundService(intent);
             appendLog("OK: Intent enviado (typeSelectable=true)");
-            appendLog("BootService debe abrir SysBootDialog.");
+            appendLog("BootService debe abrir SysBootupDialog.");
         } catch (Exception e) {
             appendLog("ERROR: " + e.getClass().getSimpleName() + ": " + e.getMessage());
         }
@@ -123,6 +123,9 @@ public class MainActivity extends Activity {
         }
     }
 
+    // ⚠️ DESTRUCTIVE PATH — original PoC, kept for reproducibility.
+    // Acts only when 'path' points to a valid vendor-signed OTA with ota-wipe=yes,
+    // triggering an IRREVERSIBLE factory reset. Use only on hardware you own.
     private void pocWipe(String path) {
         appendLog("--- PoC WIPE REAL ---");
         try {

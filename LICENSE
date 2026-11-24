@@ -1,0 +1,12 @@
+Copyright (c) 2026 Javier Aguilar
+
+This repository is published for defensive security research, responsible
+disclosure, and educational purposes.
+
+Permission is granted to use, copy, and modify its contents for security
+research and defensive purposes, provided this notice is retained. The
+proof-of-concept software is provided "AS IS", without warranty of any kind,
+and the author accepts no liability for any damage or misuse.
+
+The destructive code path included in the proof-of-concept must only be used on
+hardware you own or are explicitly authorized to test.

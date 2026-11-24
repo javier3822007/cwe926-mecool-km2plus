@@ -1,0 +1,13 @@
+11-24 12:25:57.005   523  2466 D audioserver: FGS Logger Transaction failed
+11-24 12:25:57.028   753  2323 I ActivityManager: Background started FGS: Allowed [callingPackage: com.poc.cwe926.bootservice; callingUid: 10014; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { act=com.skw.ota.update.BootService cmp=com.sdt.ota/.BootService }; code:PROC_STATE_TOP; tempAllowListReason:<null>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-24 12:25:57.045  7992  7992 W com.sdt.ota: type=1400 audit(0.0:183): avc:  denied  { read } for  name="u:object_r:vendor_skyworthdigital_prop:s0" dev="tmpfs" ino=389 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:vendor_skyworthdigital_prop:s0 tclass=file permissive=0 app=com.sdt.ota
+11-24 12:25:57.052  7992  7992 I SdtSysUpdate: CoreService onStartCommand
+11-24 12:25:57.052  7992  7992 I SdtAppUpdate: CoreService onStartCommand
+11-24 12:25:57.071   753  1707 D CoreBackPreview: Window{114fb2b u0 com.poc.cwe926.bootservice/com.poc.cwe926.bootservice.MainActivity}: Setting back callback null
+11-24 12:25:57.089   753  2323 W InputManager-JNI: Input channel object '114fb2b com.poc.cwe926.bootservice/com.poc.cwe926.bootservice.MainActivity (client)' was disposed without first being removed with the input manager!
+11-24 12:25:57.146   753  2321 I ImeTracker: com.poc.cwe926.bootservice:6f5a4d68: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_SAME_WINDOW_FOCUSED_WITHOUT_EDITOR
+11-24 12:25:57.147   753  2321 I ImeTracker: com.poc.cwe926.bootservice:6f5a4d68: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-24 12:25:57.151  1486  1486 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1446 onStartInput(EditorInfo{EditorInfo{packageName=com.poc.cwe926.bootservice, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-24 12:25:57.152   753  2323 W PackageConfigPersister: App-specific configuration not found for packageName: com.poc.cwe926.bootservice and userId: 0
+11-24 12:25:57.212   523   713 D audioserver: FGS Logger Transaction failed
+11-24 12:25:59.542   753  2323 W NotificationService: Toast already killed. pkg=com.sdt.ota token=android.os.BinderProxy@e176b0b

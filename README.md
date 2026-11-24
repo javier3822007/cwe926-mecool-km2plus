@@ -8,9 +8,35 @@
 | **Product** | MECOOL KM2 Plus (Amlogic S905X4-B, Android TV 14) |
 | **Vulnerable component** | `com.sdt.ota.BootService` in `SdtUpdate.apk` (version 2.5.1, versionCode 20501) |
 | **Affected firmware** | C1.2.7_20250822 (confirmed), C1.3.5_20261111 (confirmed, latest available) |
-| **Impact** | Integrity / Availability — forced OTA update, recovery mode, or factory reset (complete user data loss) from an unprivileged app |
+| **Impact** | Integrity / Availability, from an unprivileged app. **Demonstrated:** forced system-update dialog, reachable privileged OTA chain. **Potential (not executed in testing):** factory reset / full user-data wipe when supplied a vendor-signed wipe OTA |
 | **Fix available** | No |
 | **Discovered by** | Javier Aguilar |
+
+## ⚠️ Responsible Use and Disclaimer
+
+This repository documents a real vulnerability and includes a **complete, original proof-of-concept** for reproducibility and independent verification by CNAs and security reviewers.
+
+The PoC application contains a destructive code path (`pocWipe()` / the "WIPE REAL" button) that, **only when supplied with a valid vendor-signed OTA package containing the `ota-wipe=yes` flag**, triggers an **irreversible factory reset** (total user-data loss). That OTA package is **not** included in this repository.
+
+- Use only on hardware you own, for authorized security research and responsible disclosure.
+- Do not run the destructive path on any device whose data you are not willing to lose.
+- The non-destructive paths (Test 1 and Test 2) already demonstrate the vulnerability and do not wipe the device.
+- The author accepts no liability for misuse or resulting damage.
+
+## CVSS 4.0
+
+**Vector:** `CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N`
+**Base score: 6.9 — Medium** (official CVSS 4.0 calculator)
+
+| Metric | Value | Rationale |
+|---|---|---|
+| Attack Vector | Local | Requires an app installed on the device |
+| Privileges Required | None | PoC app declares zero permissions |
+| User Interaction | Passive | Victim installs / runs the app |
+| Vuln. Confidentiality | None | No data is read |
+| Vuln. Integrity | High | Forced OTA / update-state manipulation |
+| Vuln. Availability | High | Forced reboot/recovery; potential factory reset |
+| Subsequent (C/I/A) | None | Scoped to the device's update subsystem |
 
 ## Description
 
@@ -30,7 +56,7 @@ This is **not remote code execution**. The OTA package signature verification in
 
 - Triggering a system update dialog without user consent
 - Forcing the device into recovery mode
-- Initiating a **factory reset** (complete user data loss) using a legitimately signed vendor OTA package that includes the `ota-wipe=yes` flag
+- Initiating a **factory reset** (complete user data loss) — *potential; not executed against a live device during testing* — using a legitimately signed vendor OTA package that includes the `ota-wipe=yes` flag
 - Repeated reboots / recovery cycles (denial of service)
 
 ### Developer awareness
@@ -57,13 +83,13 @@ Unprivileged app (UID 10014, 0 granted permissions)
 
 ## Execution Evidence
 
-Confirmed on a physical MECOOL KM2 Plus (firmware C1.2.7_20250822) on 2026-11-24.
-The unprivileged PoC app (`com.poc.cwe926.bootservice`, UID 10014, zero declared
-permissions) reached `BootService` in `com.sdt.ota` (UID 10094), which launched its
-privileged `CoreService` and the `SysBootupDialog`.
+Confirmed on a physical MECOOL KM2 Plus (firmware C1.2.7_20250822) on 2026-11-24. The unprivileged PoC app (`com.poc.cwe926.bootservice`, UID 10014, zero declared permissions) reached `BootService` in `com.sdt.ota` (UID 10094), which launched its privileged `CoreService` and the `SysBootupDialog`.
 
-- [`evidence/logcat_chain_key.txt`](poc_bootservice_cwe926/evidence/logcat_chain_key.txt) — key logcat lines (cross-UID foreground-service launch: `callingUid:10014` → `com.sdt.ota` UID 10094).
-- [`evidence/logcat_chain_complete.txt`](poc_bootservice_cwe926/evidence/logcat_chain_complete.txt) — full capture.
+- [`evidence/logcat_btn2_chain.txt`](poc_bootservice_cwe926/evidence/logcat_btn2_chain.txt) — Test 2: direct BootService launch by the PoC app (`callingPackage: com.poc.cwe926.bootservice; callingUid: 10014`).
+- [`evidence/logcat_chain_key.txt`](poc_bootservice_cwe926/evidence/logcat_chain_key.txt) — Test 1: key cross-UID foreground-service launch lines.
+- [`evidence/logcat_chain_complete.txt`](poc_bootservice_cwe926/evidence/logcat_chain_complete.txt) — Test 1: full capture.
+- [`evidence/dumpsys_poc_complete.txt`](poc_bootservice_cwe926/evidence/dumpsys_poc_complete.txt) — PoC app package dump (zero permissions).
+- [`evidence/dumpsys_target_complete.txt`](poc_bootservice_cwe926/evidence/dumpsys_target_complete.txt) — target `com.sdt.ota` package dump.
 
 ## Proof of Concept
 
@@ -132,9 +158,9 @@ The PoC uses `startForegroundService()` from an on-screen button for demonstrati
 
 1. A malicious app is installed via USB, a third-party app store, or social engineering
 2. The app declares `android.permission.INTERNET` (a **normal** permission, granted automatically without user approval)
-3. On first run (or silently via a broadcast receiver), it downloads a legitimately signed vendor OTA package — the vendor's own OTA C1.2.7 (971 MB, `ota-wipe=yes`) is still served by Google's update infrastructure as of November 2026
+3. On first run (or silently via a broadcast receiver), it downloads a legitimately signed vendor OTA package that carries a wipe flag — the vendor's own firmware C1.3.5_20261111 (`ota-wipe=yes` / `POWERWASH=1`) is served by Google's update infrastructure as of November 2026
 4. It calls `startForegroundService()` targeting `BootService` with the downloaded file path
-5. The device factory-resets, destroying all user data
+5. The device factory-resets, destroying all user data *(this final step was not executed against a live device during this research)*
 
 ## Affected Firmware Versions
 
@@ -162,7 +188,7 @@ This prevents `BootService` from being reachable but also disables the legitimat
 3. Build > Build APK(s)
 4. Install via USB: copy the APK to a USB drive and install from a file manager on the TV, or use `adb install app/build/outputs/apk/debug/app-debug.apk`
 
-Requirements: Android SDK with compileSdk 34, Gradle 9.0+, Java 17+.
+Requirements: Android SDK with compileSdk 34, Gradle 8.7+ (AGP 8.5.2), Java 17+.
 
 ## Project Structure
 
