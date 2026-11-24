@@ -55,6 +55,16 @@ Unprivileged app (UID 10014, 0 granted permissions)
             → update_engine
 ```
 
+## Execution Evidence
+
+Confirmed on a physical MECOOL KM2 Plus (firmware C1.2.7_20250822) on 2026-11-24.
+The unprivileged PoC app (`com.poc.cwe926.bootservice`, UID 10014, zero declared
+permissions) reached `BootService` in `com.sdt.ota` (UID 10094), which launched its
+privileged `CoreService` and the `SysBootupDialog`.
+
+- [`evidence/logcat_chain_key.txt`](poc_bootservice_cwe926/evidence/logcat_chain_key.txt) — key logcat lines (cross-UID foreground-service launch: `callingUid:10014` → `com.sdt.ota` UID 10094).
+- [`evidence/logcat_chain_complete.txt`](poc_bootservice_cwe926/evidence/logcat_chain_complete.txt) — full capture.
+
 ## Proof of Concept
 
 The PoC is a self-contained Android application (`poc_bootservice_cwe926/`) that declares **zero `uses-permission` elements** in its manifest. It was installed via USB on a physical MECOOL KM2 Plus device running firmware C1.2.7_20250822.
