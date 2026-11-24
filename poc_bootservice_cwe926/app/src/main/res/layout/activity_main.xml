@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:background="#FF1A1A2E">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_title"
+        android:textSize="22sp"
+        android:textColor="#FFFFFFFF"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF99"
+        android:fontFamily="monospace"
+        android:background="#22FFFFFF"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Cargando info..." />
+
+    <Button
+        android:id="@+id/btn_safe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_safe"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        android:focusable="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#33FFFFFF"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ota_path_label"
+        android:textSize="13sp"
+        android:textColor="#FFAAAAAA"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/ota_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ota_path_hint"
+        android:textSize="14sp"
+        android:textColor="#FFFFFFFF"
+        android:textColorHint="#FF666688"
+        android:backgroundTint="#FF444466"
+        android:padding="12dp"
+        android:inputType="text"
+        android:singleLine="true"
+        android:focusable="true"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_wipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_wipe"
+        android:textSize="16sp"
+        android:textColor="#FFFFFFFF"
+        android:backgroundTint="#FFCC0000"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        android:focusable="true" />
+
+    <ScrollView
+        android:id="@+id/scroll_log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FF111122"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/log_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#FF88FF88"
+            android:fontFamily="monospace"
+            android:text="" />
+    </ScrollView>
+
+</LinearLayout>

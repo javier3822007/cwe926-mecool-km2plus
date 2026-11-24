@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PoC CWE-926 BootService</string>
+    <string name="app_title">PoC CWE-926: BootService (com.sdt.ota)</string>
+    <string name="btn_safe">PoC sin wipe (typeSelectable=true)</string>
+    <string name="btn_wipe">PoC con WIPE REAL</string>
+    <string name="ota_path_label">Ruta OTA (vacío = prueba cadena sin wipe):</string>
+    <string name="ota_path_hint">/sdcard/ota_wipe.zip</string>
+</resources>
